@@ -8,37 +8,82 @@ output: html_notebook
 
 ```{r}
 #load libraries 
+library(tidyverse)
 
 #load in the data here 
 # we will only be using the "street-addresses.csv" file from the text
-
-
+download.file(url="https://mdbeckman.github.io/dcSupplement/data/street-addresses.csv", destfile = "street_adresses.csv")
+Addresses <-
+  read.csv("street_adresses.csv")
 
 ```
 
 ## Recreate Solved Example using `sample(50)`
 
 ```{r}
+# get sample of 50 adresses
+Sample <-
+  Addresses %>%
+  sample_n(size = 50)
 
+# box is better pattern
+pattern <- "BOX\\s+(\\d+)"
+
+# cases that match PO Box
+Matches <- 
+  Sample %>%
+  filter(grepl(pattern, address))
+
+# cases that don't match
+Dont <- 
+  Sample %>%
+  filter( !grepl(pattern, address))
+
+# pull out pattern for box 
+BoxNumbers <- 
+  Sample %>%
+  filter(grepl(pattern, address)) %>%
+  tidyr::extract(address, into = "boxnum", regex = pattern)
 
 ```
 
 ## Recreate Soved Example using the entire `Address` data set
 
 ```{r}
+# identify pattern
+pattern <- "BOX\\s+(\\d+)"
 
+# find cases that are boxes 
+Matches_all <- 
+  Addresses %>%
+  filter(grepl(pattern, address))
+
+# find cases that arent
+Dont_all <- 
+  Addresses %>%
+  filter( !grepl(pattern, address))
+
+# pull out bix numbers for entire set
+BoxNumbers_all <- 
+  Addresses %>%
+  filter(grepl(pattern, address)) %>%
+  tidyr::extract(address, into = "boxnum", regex = pattern)
 
 ```
 
 #### Additional Question: How many addresses are a PO BOX (including NCSU BOX)? 
 
 ```{r}
+# identify pattern
+pattern <- "BOX\\s+(\\d+)"
 
-
+# find cases that are boxes 
+Matches_all <- 
+  Addresses %>%
+  filter(grepl(pattern, address))
 ```
 
-My answer here...... 
-
+There are 11,100 cases that are PO boxes.
 
 ## Back to the Streets: Your Turn
 

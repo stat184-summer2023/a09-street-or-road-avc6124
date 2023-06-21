@@ -1758,97 +1758,117 @@ display: none;
 <h2>Load in the data</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI2xvYWQgaW4gdGhlIGRhdGEgaGVyZSBcbiMgd2Ugd2lsbCBvbmx5IGJlIHVzaW5nIHRoZSBcXHN0cmVldC1hZGRyZXNzZXMuY3N2XFwgZmlsZSBmcm9tIHRoZSB0ZXh0XG5BZGRyZXNzZXMgPC0gcmVhZF9jc3YoXFxodHRwczovL21kYmVja21hbi5naXRodWIuaW8vZGNTdXBwbGVtZW50L2RhdGEvc3RyZWV0LWFkZHJlc3Nlcy5jc3ZcXClcblxuYGBgXG5gYGAifQ== -->
-<pre class="r"><code>```r
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xvYWQgbGlicmFyaWVzIFxubGlicmFyeSh0aWR5dmVyc2UpXG5cbiNsb2FkIGluIHRoZSBkYXRhIGhlcmUgXG4jIHdlIHdpbGwgb25seSBiZSB1c2luZyB0aGUgXCJzdHJlZXQtYWRkcmVzc2VzLmNzdlwiIGZpbGUgZnJvbSB0aGUgdGV4dFxuZG93bmxvYWQuZmlsZSh1cmw9XCJodHRwczovL21kYmVja21hbi5naXRodWIuaW8vZGNTdXBwbGVtZW50L2RhdGEvc3RyZWV0LWFkZHJlc3Nlcy5jc3ZcIiwgZGVzdGZpbGUgPSBcInN0cmVldF9hZHJlc3Nlcy5jc3ZcIilcbmBgYCJ9 -->
+<pre class="r"><code>#load libraries 
+library(tidyverse)
+
 #load in the data here 
-# we will only be using the \street-addresses.csv\ file from the text
-Addresses &lt;- read_csv(\https://mdbeckman.github.io/dcSupplement/data/street-addresses.csv\)
+# we will only be using the &quot;street-addresses.csv&quot; file from the text
+download.file(url=&quot;https://mdbeckman.github.io/dcSupplement/data/street-addresses.csv&quot;, destfile = &quot;street_adresses.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoidHJ5aW5nIFVSTCAnaHR0cHM6Ly9tZGJlY2ttYW4uZ2l0aHViLmlvL2RjU3VwcGxlbWVudC9kYXRhL3N0cmVldC1hZGRyZXNzZXMuY3N2J1xuQ29udGVudCB0eXBlICd0ZXh0L2NzdjsgY2hhcnNldD11dGYtOCcgbGVuZ3RoIDI3MTAwOSBieXRlcyAoMjY0IEtCKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMjY0IEtCXG4ifQ== -->
+<pre><code>trying URL &#39;https://mdbeckman.github.io/dcSupplement/data/street-addresses.csv&#39;
+Content type &#39;text/csv; charset=utf-8&#39; length 271009 bytes (264 KB)
+==================================================
+downloaded 264 KB</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWRkcmVzc2VzIDwtXG4gIHJlYWQuY3N2KFwic3RyZWV0X2FkcmVzc2VzLmNzdlwiKVxuXG5gYGAifQ== -->
+<pre class="r"><code>Addresses &lt;-
+  read.csv(&quot;street_adresses.csv&quot;)
 </code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="recreate-solved-example-using-sample50" class="section level2">
+<h2>Recreate Solved Example using <code>sample(50)</code></h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBnZXQgc2FtcGxlIG9mIDUwIGFkcmVzc2VzXG5TYW1wbGUgPC1cbiAgQWRkcmVzc2VzICU+JVxuICBzYW1wbGVfbihzaXplID0gNTApXG5cbiMgYm94IGlzIGJldHRlciBwYXR0ZXJuXG5wYXR0ZXJuIDwtIFwiQk9YXFxcXHMrKFxcXFxkKylcIlxuXG4jIGNhc2VzIHRoYXQgbWF0Y2ggUE8gQm94XG5NYXRjaGVzIDwtIFxuICBTYW1wbGUgJT4lXG4gIGZpbHRlcihncmVwbChwYXR0ZXJuLCBhZGRyZXNzKSlcblxuIyBjYXNlcyB0aGF0IGRvbid0IG1hdGNoXG5Eb250IDwtIFxuICBTYW1wbGUgJT4lXG4gIGZpbHRlciggIWdyZXBsKHBhdHRlcm4sIGFkZHJlc3MpKVxuXG4jIHB1bGwgb3V0IHBhdHRlcm4gZm9yIGJveCBcbkJveE51bWJlcnMgPC0gXG4gIFNhbXBsZSAlPiVcbiAgZmlsdGVyKGdyZXBsKHBhdHRlcm4sIGFkZHJlc3MpKSAlPiVcbiAgdGlkeXI6OmV4dHJhY3QoYWRkcmVzcywgaW50byA9IFwiYm94bnVtXCIsIHJlZ2V4ID0gcGF0dGVybilcblxuYGBgIn0= -->
+<pre class="r"><code># get sample of 50 adresses
+Sample &lt;-
+  Addresses %&gt;%
+  sample_n(size = 50)
 
-&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTU0ODMgQ29sdW1uczogMVxu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+# box is better pattern
+pattern &lt;- &quot;BOX\\s+(\\d+)&quot;
+
+# cases that match PO Box
+Matches &lt;- 
+  Sample %&gt;%
+  filter(grepl(pattern, address))
+
+# cases that don&#39;t match
+Dont &lt;- 
+  Sample %&gt;%
+  filter( !grepl(pattern, address))
+
+# pull out pattern for box 
+BoxNumbers &lt;- 
+  Sample %&gt;%
+  filter(grepl(pattern, address)) %&gt;%
+  tidyr::extract(address, into = &quot;boxnum&quot;, regex = pattern)
 </code></pre>
-<p>Rows: 15483 Columns: 1 ── Column specification
-─────────────────────────────────────────────────────── Delimiter:<br />
-</p>
-<pre><code>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="recreate-soved-example-using-the-entire-address-data-set" class="section level2">
+<h2>Recreate Soved Example using the entire <code>Address</code> data
+set</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVudGlmeSBwYXR0ZXJuXG5wYXR0ZXJuIDwtIFwiQk9YXFxcXHMrKFxcXFxkKylcIlxuXG4jIGZpbmQgY2FzZXMgdGhhdCBhcmUgYm94ZXMgXG5NYXRjaGVzX2FsbCA8LSBcbiAgQWRkcmVzc2VzICU+JVxuICBmaWx0ZXIoZ3JlcGwocGF0dGVybiwgYWRkcmVzcykpXG5cbiMgZmluZCBjYXNlcyB0aGF0IGFyZW50XG5Eb250X2FsbCA8LSBcbiAgQWRkcmVzc2VzICU+JVxuICBmaWx0ZXIoICFncmVwbChwYXR0ZXJuLCBhZGRyZXNzKSlcblxuIyBwdWxsIG91dCBiaXggbnVtYmVycyBmb3IgZW50aXJlIHNldFxuQm94TnVtYmVyc19hbGwgPC0gXG4gIEFkZHJlc3NlcyAlPiVcbiAgZmlsdGVyKGdyZXBsKHBhdHRlcm4sIGFkZHJlc3MpKSAlPiVcbiAgdGlkeXI6OmV4dHJhY3QoYWRkcmVzcywgaW50byA9IFwiYm94bnVtXCIsIHJlZ2V4ID0gcGF0dGVybilcblxuYGBgIn0= -->
+<pre class="r"><code># identify pattern
+pattern &lt;- &quot;BOX\\s+(\\d+)&quot;
 
+# find cases that are boxes 
+Matches_all &lt;- 
+  Addresses %&gt;%
+  filter(grepl(pattern, address))
 
-&lt;!-- rnb-output-end --&gt;
+# find cases that arent
+Dont_all &lt;- 
+  Addresses %&gt;%
+  filter( !grepl(pattern, address))
 
-&lt;!-- rnb-chunk-end --&gt;
+# pull out bix numbers for entire set
+BoxNumbers_all &lt;- 
+  Addresses %&gt;%
+  filter(grepl(pattern, address)) %&gt;%
+  tidyr::extract(address, into = &quot;boxnum&quot;, regex = pattern)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="additional-question-how-many-addresses-are-a-po-box-including-ncsu-box" class="section level4">
+<h4>Additional Question: How many addresses are a PO BOX (including NCSU
+BOX)?</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVudGlmeSBwYXR0ZXJuXG5wYXR0ZXJuIDwtIFwiQk9YXFxcXHMrKFxcXFxkKylcIlxuXG4jIGZpbmQgY2FzZXMgdGhhdCBhcmUgYm94ZXMgXG5NYXRjaGVzX2FsbCA8LSBcbiAgQWRkcmVzc2VzICU+JVxuICBmaWx0ZXIoZ3JlcGwocGF0dGVybiwgYWRkcmVzcykpXG5gYGAifQ== -->
+<pre class="r"><code># identify pattern
+pattern &lt;- &quot;BOX\\s+(\\d+)&quot;
 
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-## Recreate Solved Example using `sample(50)`
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-## Recreate Soved Example using the entire `Address` data set
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-#### Additional Question: How many addresses are a PO BOX (including NCSU BOX)? 
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-My answer here...... 
-
-
-## Back to the Streets: Your Turn
-
-#### Part 1: Explain (in english) each line of the following code chunk
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucGF0dGVybiA8LSBcXChTVHxSRHxST0FEKVxcXG5MZWZ0T3ZlcnMgPC1cbiAgQWRkcmVzc2VzICU+JSBcbiAgZmlsdGVyKCAhZ3JlcGwocGF0dGVybiwgYWRkcmVzcyksXG4gICAgICAgICAgIWdyZXBsKFxcXFxcXHNBUFR8VU5JVFxcXFxzW1xcXFxkXSskXFwsIGFkZHJlc3MpLFxuICAgICAgICAgICFncmVwbChcXCBCT1ggXFwsIGFkZHJlc3MpXG4gICAgICAgICAgKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
+# find cases that are boxes 
+Matches_all &lt;- 
+  Addresses %&gt;%
+  filter(grepl(pattern, address))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>There are 11,100 cases that are PO boxes.</p>
+</div>
+</div>
+<div id="back-to-the-streets-your-turn" class="section level2">
+<h2>Back to the Streets: Your Turn</h2>
+<div id="part-1-explain-in-english-each-line-of-the-following-code-chunk" class="section level4">
+<h4>Part 1: Explain (in english) each line of the following code
+chunk</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucGF0dGVybiA8LSBcXChTVHxSRHxST0FEKVxcXG5MZWZ0T3ZlcnMgPC1cbiAgQWRkcmVzc2VzICU+JSBcbiAgZmlsdGVyKCAhZ3JlcGwocGF0dGVybiwgYWRkcmVzcyksXG4gICAgICAgICAgIWdyZXBsKFxcXFxcXHNBUFR8VU5JVFxcXFxzW1xcXFxkXSskXFwsIGFkZHJlc3MpLFxuICAgICAgICAgICFncmVwbChcXCBCT1ggXFwsIGFkZHJlc3MpXG4gICAgICAgICAgKVxuYGBgXG5gYGAifQ== -->
+<pre class="r"><code>```r
 pattern &lt;- \(ST|RD|ROAD)\
 LeftOvers &lt;-
   Addresses %&gt;% 
@@ -1861,6 +1881,7 @@ LeftOvers &lt;-
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>My answer here…….</p>
+</div>
 <div id="part-2-implement-your-method-on-the-entire-addresses-data-set.-explain-how-your-code-works-line-by-line." class="section level4">
 <h4>Part 2: Implement your method on the entire <code>Addresses</code>
 data set. Explain how your code works line by line.</h4>
@@ -1897,7 +1918,7 @@ alphabetically.</p>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQWN0aXZpdHk6IFN0cmVldCBvciBSb2FkPyIKYXV0aG9yOiAiQWx2aW4gQ2hlbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyMgTG9hZCBpbiB0aGUgZGF0YQoKYGBge3J9CiNsb2FkIGxpYnJhcmllcyAKCiNsb2FkIGluIHRoZSBkYXRhIGhlcmUgCiMgd2Ugd2lsbCBvbmx5IGJlIHVzaW5nIHRoZSAic3RyZWV0LWFkZHJlc3Nlcy5jc3YiIGZpbGUgZnJvbSB0aGUgdGV4dAoKCgpgYGAKCiMjIFJlY3JlYXRlIFNvbHZlZCBFeGFtcGxlIHVzaW5nIGBzYW1wbGUoNTApYAoKYGBge3J9CgoKYGBgCgojIyBSZWNyZWF0ZSBTb3ZlZCBFeGFtcGxlIHVzaW5nIHRoZSBlbnRpcmUgYEFkZHJlc3NgIGRhdGEgc2V0CgpgYGB7cn0KCgpgYGAKCiMjIyMgQWRkaXRpb25hbCBRdWVzdGlvbjogSG93IG1hbnkgYWRkcmVzc2VzIGFyZSBhIFBPIEJPWCAoaW5jbHVkaW5nIE5DU1UgQk9YKT8gCgpgYGB7cn0KCgpgYGAKCk15IGFuc3dlciBoZXJlLi4uLi4uIAoKCiMjIEJhY2sgdG8gdGhlIFN0cmVldHM6IFlvdXIgVHVybgoKIyMjIyBQYXJ0IDE6IEV4cGxhaW4gKGluIGVuZ2xpc2gpIGVhY2ggbGluZSBvZiB0aGUgZm9sbG93aW5nIGNvZGUgY2h1bmsKCmBgYHtyfQpwYXR0ZXJuIDwtICIoU1R8UkR8Uk9BRCkiCkxlZnRPdmVycyA8LQogIEFkZHJlc3NlcyAlPiUgCiAgZmlsdGVyKCAhZ3JlcGwocGF0dGVybiwgYWRkcmVzcyksCiAgICAgICAgICAhZ3JlcGwoIlxcc0FQVHxVTklUXFxzW1xcZF0rJCIsIGFkZHJlc3MpLAogICAgICAgICAgIWdyZXBsKCIgQk9YICIsIGFkZHJlc3MpCiAgICAgICAgICApCmBgYAoKTXkgYW5zd2VyIGhlcmUuLi4uLi4uCgojIyMjIFBhcnQgMjogSW1wbGVtZW50IHlvdXIgbWV0aG9kIG9uIHRoZSBlbnRpcmUgYEFkZHJlc3Nlc2AgZGF0YSBzZXQuIEV4cGxhaW4gaG93IHlvdXIgY29kZSB3b3JrcyBsaW5lIGJ5IGxpbmUuCgpgYGB7cn0KCgoKYGBgCgpNeSBhbnN3ZXIgaGVyZS4uLi4uLi4KCiMjIyMgQWRkaXRpb25hbCBRdWVzdGlvbiAxOiBQcmVzZW50IHlvdXIgcmVzdWx0IGZyb20gcGFydCAyIGJ5IHByb3ZpZGluZyBhIHRhYmxlIGluIGRlc2NlbmRpbmcgb3JkZXIgb2YgcG9wdWxhcml0eSBmb3IgdGhlIHN0cmVldCBuYW1lIGVuZGluZ3MgeW91IGZvdW5kCgpgYGB7cn0KCgpgYGAKCiMjIyMgQWRkaXRpb25hbCBRdWVzdGlvbiAyOiBQcmVzZW50IHlvdXIgcmVzdWx0IGJ5IHVzaW5nIGdncGxvdCB0byBhIGJhciBjaGFydCBpbiBkZXNjZW5kaW5nIG9yZGVyIG9mIHBvcHVsYXJpdHkgZm9yIHRoZSBzdHJlZXQgbmFtZSBlbmRpbmdzIHlvdSBmb3VuZCBwcmV2aW91c2x5LgoKTm90ZTogbWFrZSBzdXJlIHlvdXIgb3JkZXIgc3RyZWV0IG5hbWVzIGFjY29yZGluZyB0byBwb3B1bGFyaXR5LCBub3QgYWxwaGFiZXRpY2FsbHkuCgpgYGB7cn0KCmBgYAoKIyMjIyBBZGRpdGlvbmFsIFF1ZXN0aW9uIDM6IENvbW1lbnQgb24gYW55IHBhdHRlcm5zIHlvdSBzZWUKCk15IGFuc3dlciBoZXJlLi4uLi4uLgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQWN0aXZpdHk6IFN0cmVldCBvciBSb2FkPyIKYXV0aG9yOiAiQWx2aW4gQ2hlbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyMgTG9hZCBpbiB0aGUgZGF0YQoKYGBge3J9CiNsb2FkIGxpYnJhcmllcyAKbGlicmFyeSh0aWR5dmVyc2UpCgojbG9hZCBpbiB0aGUgZGF0YSBoZXJlIAojIHdlIHdpbGwgb25seSBiZSB1c2luZyB0aGUgInN0cmVldC1hZGRyZXNzZXMuY3N2IiBmaWxlIGZyb20gdGhlIHRleHQKZG93bmxvYWQuZmlsZSh1cmw9Imh0dHBzOi8vbWRiZWNrbWFuLmdpdGh1Yi5pby9kY1N1cHBsZW1lbnQvZGF0YS9zdHJlZXQtYWRkcmVzc2VzLmNzdiIsIGRlc3RmaWxlID0gInN0cmVldF9hZHJlc3Nlcy5jc3YiKQpBZGRyZXNzZXMgPC0KICByZWFkLmNzdigic3RyZWV0X2FkcmVzc2VzLmNzdiIpCgpgYGAKCiMjIFJlY3JlYXRlIFNvbHZlZCBFeGFtcGxlIHVzaW5nIGBzYW1wbGUoNTApYAoKYGBge3J9CiMgZ2V0IHNhbXBsZSBvZiA1MCBhZHJlc3NlcwpTYW1wbGUgPC0KICBBZGRyZXNzZXMgJT4lCiAgc2FtcGxlX24oc2l6ZSA9IDUwKQoKIyBib3ggaXMgYmV0dGVyIHBhdHRlcm4KcGF0dGVybiA8LSAiQk9YXFxzKyhcXGQrKSIKCiMgY2FzZXMgdGhhdCBtYXRjaCBQTyBCb3gKTWF0Y2hlcyA8LSAKICBTYW1wbGUgJT4lCiAgZmlsdGVyKGdyZXBsKHBhdHRlcm4sIGFkZHJlc3MpKQoKIyBjYXNlcyB0aGF0IGRvbid0IG1hdGNoCkRvbnQgPC0gCiAgU2FtcGxlICU+JQogIGZpbHRlciggIWdyZXBsKHBhdHRlcm4sIGFkZHJlc3MpKQoKIyBwdWxsIG91dCBwYXR0ZXJuIGZvciBib3ggCkJveE51bWJlcnMgPC0gCiAgU2FtcGxlICU+JQogIGZpbHRlcihncmVwbChwYXR0ZXJuLCBhZGRyZXNzKSkgJT4lCiAgdGlkeXI6OmV4dHJhY3QoYWRkcmVzcywgaW50byA9ICJib3hudW0iLCByZWdleCA9IHBhdHRlcm4pCgpgYGAKCiMjIFJlY3JlYXRlIFNvdmVkIEV4YW1wbGUgdXNpbmcgdGhlIGVudGlyZSBgQWRkcmVzc2AgZGF0YSBzZXQKCmBgYHtyfQojIGlkZW50aWZ5IHBhdHRlcm4KcGF0dGVybiA8LSAiQk9YXFxzKyhcXGQrKSIKCiMgZmluZCBjYXNlcyB0aGF0IGFyZSBib3hlcyAKTWF0Y2hlc19hbGwgPC0gCiAgQWRkcmVzc2VzICU+JQogIGZpbHRlcihncmVwbChwYXR0ZXJuLCBhZGRyZXNzKSkKCiMgZmluZCBjYXNlcyB0aGF0IGFyZW50CkRvbnRfYWxsIDwtIAogIEFkZHJlc3NlcyAlPiUKICBmaWx0ZXIoICFncmVwbChwYXR0ZXJuLCBhZGRyZXNzKSkKCiMgcHVsbCBvdXQgYml4IG51bWJlcnMgZm9yIGVudGlyZSBzZXQKQm94TnVtYmVyc19hbGwgPC0gCiAgQWRkcmVzc2VzICU+JQogIGZpbHRlcihncmVwbChwYXR0ZXJuLCBhZGRyZXNzKSkgJT4lCiAgdGlkeXI6OmV4dHJhY3QoYWRkcmVzcywgaW50byA9ICJib3hudW0iLCByZWdleCA9IHBhdHRlcm4pCgpgYGAKCiMjIyMgQWRkaXRpb25hbCBRdWVzdGlvbjogSG93IG1hbnkgYWRkcmVzc2VzIGFyZSBhIFBPIEJPWCAoaW5jbHVkaW5nIE5DU1UgQk9YKT8gCgpgYGB7cn0KIyBpZGVudGlmeSBwYXR0ZXJuCnBhdHRlcm4gPC0gIkJPWFxccysoXFxkKykiCgojIGZpbmQgY2FzZXMgdGhhdCBhcmUgYm94ZXMgCk1hdGNoZXNfYWxsIDwtIAogIEFkZHJlc3NlcyAlPiUKICBmaWx0ZXIoZ3JlcGwocGF0dGVybiwgYWRkcmVzcykpCmBgYAoKVGhlcmUgYXJlIDExLDEwMCBjYXNlcyB0aGF0IGFyZSBQTyBib3hlcy4KCiMjIEJhY2sgdG8gdGhlIFN0cmVldHM6IFlvdXIgVHVybgoKIyMjIyBQYXJ0IDE6IEV4cGxhaW4gKGluIGVuZ2xpc2gpIGVhY2ggbGluZSBvZiB0aGUgZm9sbG93aW5nIGNvZGUgY2h1bmsKCmBgYHtyfQpwYXR0ZXJuIDwtICIoU1R8UkR8Uk9BRCkiCkxlZnRPdmVycyA8LQogIEFkZHJlc3NlcyAlPiUgCiAgZmlsdGVyKCAhZ3JlcGwocGF0dGVybiwgYWRkcmVzcyksCiAgICAgICAgICAhZ3JlcGwoIlxcc0FQVHxVTklUXFxzW1xcZF0rJCIsIGFkZHJlc3MpLAogICAgICAgICAgIWdyZXBsKCIgQk9YICIsIGFkZHJlc3MpCiAgICAgICAgICApCmBgYAoKTXkgYW5zd2VyIGhlcmUuLi4uLi4uCgojIyMjIFBhcnQgMjogSW1wbGVtZW50IHlvdXIgbWV0aG9kIG9uIHRoZSBlbnRpcmUgYEFkZHJlc3Nlc2AgZGF0YSBzZXQuIEV4cGxhaW4gaG93IHlvdXIgY29kZSB3b3JrcyBsaW5lIGJ5IGxpbmUuCgpgYGB7cn0KCgoKYGBgCgpNeSBhbnN3ZXIgaGVyZS4uLi4uLi4KCiMjIyMgQWRkaXRpb25hbCBRdWVzdGlvbiAxOiBQcmVzZW50IHlvdXIgcmVzdWx0IGZyb20gcGFydCAyIGJ5IHByb3ZpZGluZyBhIHRhYmxlIGluIGRlc2NlbmRpbmcgb3JkZXIgb2YgcG9wdWxhcml0eSBmb3IgdGhlIHN0cmVldCBuYW1lIGVuZGluZ3MgeW91IGZvdW5kCgpgYGB7cn0KCgpgYGAKCiMjIyMgQWRkaXRpb25hbCBRdWVzdGlvbiAyOiBQcmVzZW50IHlvdXIgcmVzdWx0IGJ5IHVzaW5nIGdncGxvdCB0byBhIGJhciBjaGFydCBpbiBkZXNjZW5kaW5nIG9yZGVyIG9mIHBvcHVsYXJpdHkgZm9yIHRoZSBzdHJlZXQgbmFtZSBlbmRpbmdzIHlvdSBmb3VuZCBwcmV2aW91c2x5LgoKTm90ZTogbWFrZSBzdXJlIHlvdXIgb3JkZXIgc3RyZWV0IG5hbWVzIGFjY29yZGluZyB0byBwb3B1bGFyaXR5LCBub3QgYWxwaGFiZXRpY2FsbHkuCgpgYGB7cn0KCmBgYAoKIyMjIyBBZGRpdGlvbmFsIFF1ZXN0aW9uIDM6IENvbW1lbnQgb24gYW55IHBhdHRlcm5zIHlvdSBzZWUKCk15IGFuc3dlciBoZXJlLi4uLi4uLgo=</div>
 
 
 

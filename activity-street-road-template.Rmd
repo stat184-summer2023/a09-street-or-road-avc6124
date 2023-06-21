@@ -9,6 +9,7 @@ output: html_notebook
 ```{r}
 #load libraries 
 library(tidyverse)
+library(esquisse)
 
 #load in the data here 
 # we will only be using the "street-addresses.csv" file from the text
@@ -90,30 +91,61 @@ There are 11,100 cases that are PO boxes.
 #### Part 1: Explain (in english) each line of the following code chunk
 
 ```{r}
-pattern <- "(ST|RD|ROAD)"
-LeftOvers <-
-  Addresses %>% 
-  filter( !grepl(pattern, address),
-          !grepl("\\sAPT|UNIT\\s[\\d]+$", address),
-          !grepl(" BOX ", address)
+pattern <- "(ST|RD|ROAD)" #set pattern to extract 
+LeftOvers <-  #creates new Data Frame LeftOvers
+  Addresses %>%  #utilizes Addresses data set to filter through
+  filter( !grepl(pattern, address),  #checks if address doesn't contain pattern
+          !grepl("\\sAPT|UNIT\\s[\\d]+$", address), #checks if address doesn't end with space then APT or UNIT and numbers after.
+          !grepl(" BOX ", address) #checks if address doesn't contain the string BOX
           )
 ```
 
-My answer here.......
+Used comment Method to explain each line 
 
 #### Part 2: Implement your method on the entire `Addresses` data set. Explain how your code works line by line.
 
 ```{r}
 
-
+pattern2 <- "(AVE|BLVD|LN)" #set pattern to extract 
+leftovers2 <- #creates new Data Frame LeftOvers2
+  Addresses %>% #utilizes Addresses data set to filter through
+  filter(!grepl(pattern2, address), #checks if address doesn't contain pattern
+    !grepl("\\sAPT|UNIT\\s[\\d]+$", address), #checks if address doesn't end with space then APT or UNIT and numbers after.
+    !grepl(" BOX ", address) #checks if address doesn't contain the string BOX
+  )
 
 ```
 
-My answer here.......
+Used comment Method to explain each line 
 
 #### Additional Question 1: Present your result from part 2 by providing a table in descending order of popularity for the street name endings you found
 
-```{r}
+```{r} 
+
+# get all adresses that meet pattern2
+address_count <-
+  Addresses[!Addresses$address %in% leftovers2$address, ]
+
+# make match_address into dataframe
+match_address <-
+  data_frame(address_count)
+
+# total the number of times each road word occurs 
+road_num <- 
+  table(str_extract(match_address$address_count, pattern2))
+
+#create DF table with the number each road word occurs
+pt2_result <-
+  data.frame(road_end = names(road_num),
+  Count = as.numeric(road_num),
+  stringsAsFactors = FALSE)
+
+# arrange in decending order 
+pt2_sorted <-
+  arrange(pt2_result, desc(Count))
+
+# display
+head(pt2_sorted)
 
 
 ```
@@ -123,9 +155,15 @@ My answer here.......
 Note: make sure your order street names according to popularity, not alphabetically.
 
 ```{r}
+ggplot(pt2_sorted, aes(x = reorder(road_end, -Count), y = Count)) +
+  geom_col(fill = "#112446") +
+  theme_minimal() +
+  xlab("Street Endings") +
+  ylab("Count") +
+  ggtitle("Street Ending Popularity in Decending Order")
 
 ```
 
 #### Additional Question 3: Comment on any patterns you see
 
-My answer here.......
+A pattern that I notice is that Ave is is the most commone out tof the three and BLVD is the least populular with signifigantly less usages.
